@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real-Time Chat</title>
+<style>
+    body { font-family: Arial, sans-serif; }
+    #message-container { width: 300px; height: 300px; border: 1px solid #ddd; overflow-y: auto; }
+    #send-container { margin-top: 10px; }
+    #message-input { width: 240px; }
+    #send-button { width: 50px; }
+</style>
+</head>
+<body>
+<div id="message-container"></div>
+<div id="send-container">
+    <input type="text" id="message-input" placeholder="Type a message...">
+    <button id="send-button">Send</button>
+</div>
+
+<script>
+    const messageContainer = document.getElementById('message-container');
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
+
+    sendButton.addEventListener('click', () => {
+        const message = messageInput.value.trim();
+        if(message) {
+            // Display the message in the message container
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messageContainer.appendChild(messageElement);
+            // Clear the input field
+            messageInput.value = '';
+            // Scroll to the bottom of the message container
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+    });
+</script>
+</body>
+</html>
